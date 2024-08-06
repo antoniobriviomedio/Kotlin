@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         var rX = Random.nextInt(0, 3)
         var rY = Random.nextInt(0, 3)
 var i = 0
-        while (i < 9) {
+        while (i < 999) {
             rX = Random.nextInt(0, 3)
             rY = Random.nextInt(0, 3)
 
