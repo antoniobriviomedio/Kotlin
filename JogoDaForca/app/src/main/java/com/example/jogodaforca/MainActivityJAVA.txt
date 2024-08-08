@@ -1,0 +1,73 @@
+/**
+* List.of(...) é utilizado para inicializar a lista palavras em Java, equivalente à lista imutável de Kotlin.
+* Random: Em Java, Random é usado para selecionar uma palavra aleatória.
+* Arrays: O array palavraOculta é inicializado manualmente no onCreate para preencher com underscores ('_').
+* Métodos de String: O código para verificação de strings foi adaptado ao estilo Java.
+*/
+
+package com.example.jogodaforca;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import com.example.jogodaforca.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
+    private final List<String> palavras = List.of("kotlin", "android", "desenvolvedor");
+    private final String palavraSelecionada = palavras.get(new Random().nextInt(palavras.size())).toUpperCase();
+    private final char[] palavraOculta = new char[palavraSelecionada.length()];
+    private int tentativas = 6;
+    private final List<Character> letrasAdivinhadas = new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Inicializa a palavra oculta com '_'
+        for (int i = 0; i < palavraOculta.length; i++) {
+            palavraOculta[i] = '_';
+        }
+
+        atualizarTela();
+
+        binding.buttonAdivinhar.setOnClickListener(v -> {
+            String entrada = binding.editEntrada.getText().toString().toUpperCase();
+            if (!entrada.isEmpty()) {
+                char letra = entrada.charAt(0);
+                if (!letrasAdivinhadas.contains(letra)) {
+                    letrasAdivinhadas.add(letra);
+                    if (palavraSelecionada.contains(String.valueOf(letra))) {
+                        for (int i = 0; i < palavraSelecionada.length(); i++) {
+                            if (palavraSelecionada.charAt(i) == letra) {
+                                palavraOculta[i] = letra;
+                            }
+                        }
+                    } else {
+                        tentativas--;
+                    }
+                    binding.editEntrada.getText().clear();
+                    atualizarTela();
+                }
+            }
+        });
+    }
+
+    private void atualizarTela() {
+        binding.textOculto.setText(new String(palavraOculta));
+        binding.textTentativas.setText("Restam: " + tentativas);
+
+        if (new String(palavraOculta).indexOf('_') == -1) {
+            binding.textStatus.setText("Parabéns! " + palavraSelecionada);
+            binding.buttonAdivinhar.setEnabled(false);
+        } else if (tentativas <= 0) {
+            binding.textStatus.setText("Perdeu! Era " + palavraSelecionada);
+            binding.buttonAdivinhar.setEnabled(false);
+        }
+    }
+}
