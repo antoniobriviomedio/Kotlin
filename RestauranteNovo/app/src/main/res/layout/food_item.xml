@@ -19,7 +19,8 @@
             android:layout_height="80dp"
             android:src="@drawable/food1"
             android:scaleType="centerCrop"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:id="@+id/imgFood"/>
     </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/textFoodName"
