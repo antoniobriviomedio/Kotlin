@@ -1,15 +1,12 @@
-package com.example.controledecarros
-
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.example.controledecarros.databinding.ActivityMainBinding
-import com.example.controledecarros.model.Carro
+import android.widget.RadioButton
+import androidx.appcompat.app.AppCompatActivity
+import com.example.app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var carro: Carro
+    private lateinit var veiculo: Carro
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,39 +16,40 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonCriar.setOnClickListener {
-            val marca = binding.editMarca.text.toString()
-            val modelo = binding.editModelo.text.toString()
-            val anoString = binding.editAno.text.toString()
-
             try {
-                val ano = anoString.toInt()
-                // Instanciando o objeto Carro com quilometragem inicial 0
-                carro = Carro(marca, modelo, ano, 0)
+                val marca = binding.editMarca.text.toString()
+                val modelo = binding.editModelo.text.toString()
+                val ano = binding.editAno.text.toString().toInt()
+                val quilometragem = binding.editQuilometragem.text.toString().toInt()
+
+                // Instanciar o objeto com base na seleção do usuário
+                Carro(marca, modelo, ano, 0)
                 mostrarDetalhes()
+
             } catch (e: NumberFormatException) {
-                Toast.makeText(this, "Ano inválido! Por favor, insira um número válido.", Toast.LENGTH_SHORT).show()
+                binding.textDetalhes.text = e.message
             }
         }
 
-        binding.buttonQuilometragem.setOnClickListener {
-            val quilometragemString = binding.editQuilometragem.text.toString()
+        binding.buttonAtualizarQuilometragem.setOnClickListener {
+            val novaQuilometragem = binding.editQuilometragem.text.toString().toInt()
 
             try {
-                val novaQuilometragem = quilometragemString.toInt()
-                carro.quilometragem = novaQuilometragem
+                veiculo.quilometragem = novaQuilometragem
                 mostrarDetalhes()
             } catch (e: NumberFormatException) {
-                Toast.makeText(this, "Quilometragem inválida! Por favor, insira um número válido.", Toast.LENGTH_SHORT).show()
+                binding.textDetalhes.text = e.message
             }
         }
     }
 
     private fun mostrarDetalhes() {
         val detalhes = """
-            Marca: ${carro.getMarca()}
-            Modelo: ${carro.getModelo()}
-            Ano: ${carro.getAno()}
-            Quilometragem: ${carro.quilometragem}
+            Tipo: ${if (veiculo is Taxi) "Táxi" else "Carro"}
+            Marca: ${veiculo.marca}
+            Modelo: ${veiculo.modelo}
+            Ano: ${veiculo.ano}
+            Quilometragem: ${veiculo.quilometragem}
         """.trimIndent()
 
         binding.textDetalhes.text = detalhes
