@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+        <EditText
+            android:id="@+id/editMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Marca" />
+
+        <EditText
+            android:id="@+id/editModelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Modelo" />
+
+        <EditText
+            android:id="@+id/editAno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ano" />
+
+        <Button
+            android:id="@+id/buttonCriar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Criar Carro" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textDetalhes"/>
+
+        <EditText
+            android:id="@+id/editQuilometragem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quilometragem" />
+
+        <Button
+            android:id="@+id/buttonQuilometragem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atualizar Quilometragem" />
+
+
+</LinearLayout>
