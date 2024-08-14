@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun mostrarDetalhes() {
         val detalhes = """
-            Tipo: ${if (veiculo is Taxi) "Táxi" else "Carro"}
             Marca: ${veiculo.marca}
             Modelo: ${veiculo.modelo}
             Ano: ${veiculo.ano}
