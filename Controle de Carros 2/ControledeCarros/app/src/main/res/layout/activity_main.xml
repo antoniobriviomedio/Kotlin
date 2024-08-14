@@ -24,7 +24,8 @@
             android:id="@+id/editAno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ano" />
+            android:hint="Ano"
+android:inputType="number" />
 
         <Button
             android:id="@+id/buttonCriar"
@@ -41,7 +42,8 @@
             android:id="@+id/editQuilometragem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Quilometragem" />
+            android:hint="Quilometragem" 
+android:inputType="number" />
 
         <Button
             android:id="@+id/buttonQuilometragem"
