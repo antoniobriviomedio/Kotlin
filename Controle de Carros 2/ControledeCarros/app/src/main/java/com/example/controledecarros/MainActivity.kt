@@ -1,12 +1,15 @@
-import android.os.Bundle
-import android.widget.RadioButton
+package com.example.controledecarros
+
 import androidx.appcompat.app.AppCompatActivity
-import com.example.app.databinding.ActivityMainBinding
+import android.os.Bundle
+import com.example.controledecarros.databinding.ActivityMainBinding
+import com.example.controledecarros.model.Carro
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var veiculo: Carro
+    private lateinit var carro: Carro
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,35 +23,31 @@ class MainActivity : AppCompatActivity() {
                 val marca = binding.editMarca.text.toString()
                 val modelo = binding.editModelo.text.toString()
                 val ano = binding.editAno.text.toString().toInt()
-                val quilometragem = binding.editQuilometragem.text.toString().toInt()
 
-                // Instanciar o objeto com base na seleção do usuário
-                Carro(marca, modelo, ano, 0)
+                // Instanciando o objeto Carro
+                carro = Carro(marca, modelo, ano, 0)
                 mostrarDetalhes()
-
             } catch (e: NumberFormatException) {
                 binding.textDetalhes.text = e.message
             }
         }
 
-        binding.buttonAtualizarQuilometragem.setOnClickListener {
-            val novaQuilometragem = binding.editQuilometragem.text.toString().toInt()
-
+        binding.buttonQuilometragem.setOnClickListener {
             try {
-                veiculo.quilometragem = novaQuilometragem
+                val novaQuilometragem = binding.editQuilometragem.text.toString().toInt()
+                carro.quilometragem = novaQuilometragem
                 mostrarDetalhes()
             } catch (e: NumberFormatException) {
                 binding.textDetalhes.text = e.message
             }
         }
     }
-
     private fun mostrarDetalhes() {
         val detalhes = """
-            Marca: ${veiculo.marca}
-            Modelo: ${veiculo.modelo}
-            Ano: ${veiculo.ano}
-            Quilometragem: ${veiculo.quilometragem}
+            Marca: ${carro.getMarca()}
+            Modelo: ${carro.getModelo()}
+            Ano: ${carro.getAno()}
+            Quilometragem: ${carro.quilometragem}
         """.trimIndent()
 
         binding.textDetalhes.text = detalhes
