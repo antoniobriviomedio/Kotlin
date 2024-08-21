@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RadioGroup
+        android:id="@+id/radioGroupTipoVeiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioMoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moto"/>
+
+        <RadioButton
+            android:id="@+id/radioCaminhao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caminhão"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editMarca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Marca" />
+
+    <EditText
+        android:id="@+id/editModelo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Modelo" />
+
+    <EditText
+        android:id="@+id/editAno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ano"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editQuilometragem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quilometragem"
+        android:inputType="number" />
+
+    <!-- Campo adicional para Moto -->
+    <EditText
+        android:id="@+id/editCilindradas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cilindradas"
+        android:inputType="number" />
+
+    <!-- Campo adicional para Caminhao -->
+    <EditText
+        android:id="@+id/editCapacidadeCarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Capacidade de Carga (kg)"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/buttonCriar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Criar Veículo" />
+
+    <TextView
+        android:id="@+id/textDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalhes do Veículo"
+        android:paddingTop="16dp" />
+
+    <Button
+        android:id="@+id/buttonAtualizarQuilometragem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atualizar Quilometragem" />
+
+</LinearLayout>
