@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Botões para controlar a Motocicleta -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Controle de Motocicletas"
+        android:textSize="18sp"
+        android:paddingTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonRegistrarMoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Motocicleta"/>
+
+    <Button
+        android:id="@+id/buttonExibirDetalhesMoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exibir Detalhes Motocicleta"/>
+
+    <Button
+        android:id="@+id/buttonCalcularImpostoMoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcular Imposto Motocicleta"/>
+
+    <!-- Botões para controlar o Carro -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Controle do Carro"
+        android:textSize="18sp"
+        android:paddingTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonRegistrarCarro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Carro"/>
+
+    <Button
+        android:id="@+id/buttonExibirDetalhesCarro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exibir Detalhes Carro"/>
+
+    <Button
+        android:id="@+id/buttonCalcularImpostoCarro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcular Imposto Carro"/>
+
+    <!-- TextView para exibir os logs -->
+    <TextView
+        android:id="@+id/textLogs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logs"
+        android:paddingTop="16dp"
+        android:textSize="16sp"/>
+
+</LinearLayout>
